@@ -1,0 +1,131 @@
+# カラースキーム
+[[plugins]]
+repo  = 'tomasr/molokai'
+hook_source = '''
+  syntax enable
+  set background=dark
+  colorscheme molokai
+'''
+#repo  = 'altercation/vim-colors-solarzed'
+#repo  = 'croaker/mustang-vim'
+#repo  = 'jeffreyiacono/vim-colors-wombat'
+#repo  = 'nanotech/jellybeans.vim'
+#repo  = 'vim-scripts/Lusius'
+#repo  = 'vim-scripts/Zenburn'
+#repo  = 'mrkn/mrkn256.vim'
+#repo  = 'jpo/vim-railscasts-theme'
+#repo  = 'therubymug/vim-pyte'
+#repo = 'w0ng/vim-hybrid'
+on_event='VimEnter'
+
+
+# 補完
+## Deoplete
+[[plugins]] 
+repo  = 'roxma/nvim-yarp' # NeoVimでない時に deoplete 必要
+[[plugins]]
+repo  = 'roxma/vim-hug-neovim-rpc' # NeoVimでない時に deoplete 必要
+[[plugins]]
+repo  = 'Shougo/deoplete.nvim'
+depends=['nvim-yarp','vim-hug-neovim-rpc']
+hook_source = '''
+  let g:deoplete#enable_at_startup = 1
+  ""inoremap <expr><TAB> pumvisible() ? "\<C-n>" :
+  ""  \ neosnippet#expandable_or_jumpable() ?
+  ""  \ "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
+  "補完トリガーを拡張
+  inoremap <expr><CR>
+    \ (pumvisible()&&neosnippet#expandable()) ?
+    \ "\<Plug>(neosnippet_expand)" : "<C-r>=<SID>my_cr_function()<CR>"
+    function! s:my_cr_function() abort
+      return deoplete#close_popup()."\<CR>"
+    endfunction
+'''
+on_event = 'InsertEnter'
+## NeoSnippet
+[[plugins]]
+repo  = 'Shougo/neco-syntax'
+on_event = 'InsertEnter'
+[[plugins]]
+repo  = 'Shougo/neosnippet'
+hook_source = '''
+  imap <C-k> <Plug>(neosnippet_expand_or_jump)
+  smap <C-k> <Plug>(neosnippet_expand_or_jump)
+  xmap <C-k> <Plug>(neosnippet_expand_target)
+  ""smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  ""\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+  if has('conceal')
+    set conceallevel=2 concealcursor=niv
+  endif
+'''
+on_event='InsertEnter'
+on_ft=['snippet']
+depends=['neosnippet-snippets']
+
+
+#  python
+[[plugins]]
+repo  = 'davidhalter/jedi'
+on_ft = 'python'
+[[plugins]]
+repo  = 'zchee/deoplete-jedi'
+  hook_source = '''
+    let g:deoplete#sources#jedi#server_timeout = 20
+  '''
+on_ft = 'python'
+
+
+## Quickrun
+#[[plugins]]
+#repo  = 'thinca/vim-quickrun'
+#
+#
+## Restart
+#[[plugins]]
+#repo  = 'tyru/restart.vim'
+#
+#
+## Vim Indent Guides
+#[[plugins]]
+#repo  = 'nathanaelkane/vim-indent-guides'
+#
+#
+## HTML
+##  Emmet Vim
+#[[plugins]]
+#repo  = 'mattn/emmet-vim'
+#
+#
+## Snippet
+#[[plugins]]
+#repo  = 'Shougo/neosnippet'
+#
+#[[plugins]]
+#repo  = 'Shougo/neosnippet-snippets'
+#
+#
+## Surround
+#[[plugins]]
+#repo  = 'tpope/vim-surround'
+#
+#
+## Textmanip
+#[[plugins]]
+#repo  = 't9md/vim-textmanip'
+#
+#
+## CommentOut
+#[[plugins]]
+#repo  = 'tyru/caw.vim'
+#
+#
+## Taglist
+#[[plugins]]
+#repo  = 'vim-scripts/taglist.vim'
+#
+#
+## FileTree
+#[[plugins]]
+#repo  = 'scrooloose/nerdtree.git'
+
+
