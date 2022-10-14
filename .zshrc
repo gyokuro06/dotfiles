@@ -1,9 +1,8 @@
-# Use color on terminal
-autoload -Uz colors
-colors
-
 # Environmental valuable
 export LANG=ja_JP.UTF-8
+
+# Use color on terminal
+autoload -Uz colors && colors
 
 # Setting history
 HISTFILE=~/.zsh_history
@@ -11,70 +10,64 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 
 # Prompt
-PROMPT="%{$fg[green]%}%n%{$reset_color%}@%{$fg[red]%}%m %{$reset_color%}%1~ %#"
+## setting git
+autoload -Uz vcs_info
+setopt prompt_subst
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{magenta}"
+zstyle ':vcs_info:git:*' unstagedstr "%F{yellow}"
+zstyle ':vcs_info:*' formats "%F{cyan}%c%u[%b]%f"
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () { vcs_info }
+## setting prompt
+PS1='[%B%F{red}%n@%m%f%b:%F{green}%~%f]%F{cyan}$vcs_info_msg_0_%f
+%F{yellow}$%f '
 
 # Completion
-autoload -Uz compinit
-compinit
+if type brew &> /dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions:%FPATH
+    autoload -Uz compinit && compinit
+fi
 
 # Match lower and upper letter
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
-# Complement after sudo
-zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
-                    /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
-
-# Complement after ps
-zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
-
-# Use Japanese file name
-setopt print_eight_bit
-
-# Don't exit zsh with Ctrl+D
-setopt ignore_eof
-
-# Use '#' as command symbol
-setopt interactive_comments
-
-# Excute cd only directory name
-setopt auto_cd
-
-# Synchronize zsh_history
-setopt share_history
+# refresh for new installed command
+zstyle ':completion:*:commands' rehash 1
 
 # Alias
 alias ls="ls -G"
-alias la="ls -aG"
-alias ll="ls -lG"
+alias la="ls -a"
+alias ll="ls -l"
+alias lla="ls -la"
 alias mkdir="mkdir -p"
 alias sudo="sudo "
 alias pdf="open -a Preview"
 alias finda="open ."
 
-export PATH="/usr/local/bin:$PATH"
-export PATH="/usr/local/Cellar/vim/8.0.0134_2/bin/vim:$PATH"
+# Use Japanese file name
+setopt print_eight_bit
+# Use '#' as command symbol
+setopt interactive_comments
+# Excute cd only directory name
+setopt auto_cd
+# Synchronize zsh_history
+setopt share_history
 
-source ~/.bash_profile
+# 3rd party tools
+## asdf
+. /usr/local/opt/asdf/libexec/asdf.sh
+## fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+## sdkman
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+## colima
+export DOCKER_HOST=unix:///Users/yuya/.colima/default/docker.sock
+## mysql-client
+export PATH=$PATH:/usr/local/opt/mysql-client/bin
 
-
-## For Homebrew
-typeset -U path cdpath fpath manpath
-
-typeset -xT SUDO_PATH sudo_path
-typeset -U sudo_path
-
-path=(~/bin(N-/) /usr/local/bin(N-/) ${path})
-
-PATH="/Users/yuya/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/Users/yuya/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/Users/yuya/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/Users/yuya/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/yuya/perl5"; export PERL_MM_OPT;
-
-# nvm
-#[[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh
-#nvm use default
-#npm_dir=${NVM_PATH}_modules
-#export NODE_PATH=$npm_dir
-#source ~/.nvm/nvm.sh
-export PATH="/usr/local/opt/qt/bin:$PATH"
+# functions
+## tarball without mac specified files
+tgz() {
+    env COPYFILE_DISABLE=1 tar zcvf $1 --exclude=".DS_Store" ${@:2}
+}
