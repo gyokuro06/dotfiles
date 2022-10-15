@@ -1,13 +1,10 @@
-# Environmental valuable
-export LANG=ja_JP.UTF-8
-
 # Use color on terminal
 autoload -Uz colors && colors
 
 # Setting history
-HISTFILE=~/.zsh_history
-HISTSIZE=1000000
-SAVEHIST=1000000
+export HISTFILE="$XDG_STATE_HOME/.zsh_history"
+export HISTSIZE=12000
+export SAVEHIST=10000
 
 # Prompt
 ## setting git
@@ -24,15 +21,18 @@ PS1='[%B%F{red}%n@%m%f%b:%F{green}%~%f]%F{cyan}$vcs_info_msg_0_%f
 %F{yellow}$%f '
 
 # Completion
-if type brew &> /dev/null; then
-    FPATH=$(brew --prefix)/share/zsh-completions:%FPATH
-    autoload -Uz compinit && compinit
+if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+    autoload -Uz compinit && compinit -u
 fi
 
 # Match lower and upper letter
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # refresh for new installed command
 zstyle ':completion:*:commands' rehash 1
+
+# vim
+export VIMINIT=":source $XDG_CONFIG_HOME"/vim/.vimrc
 
 # Alias
 alias ls="ls -G"
