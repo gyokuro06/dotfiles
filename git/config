@@ -1,0 +1,14 @@
+[core]
+    autocrlf = false
+    ignoreCase = false
+
+[init]
+    defaultBranch = main
+    templateDir = ~/.config/git/template
+
+[commit]
+    verbose = true
+    template = .git/commit-template.txt
+
+[diff]
+    algorithm = histogram
