@@ -20,10 +20,17 @@ precmd () { vcs_info }
 PS1='[%B%F{red}%n@%m%f%b:%F{green}%~%f]%F{cyan}$vcs_info_msg_0_%f
 %F{yellow}$%f '
 
-# Completion
 if type brew &>/dev/null; then
-    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+    readonly brewpath=$(brew --prefix)
+    # Completion
+    FPATH=$brewpath/share/zsh-completions:$FPATH
     autoload -Uz compinit && compinit -u
+
+    # auto suggest
+    source $brewpath/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+    # sysntax highlight
+    source $brewpath/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
 # Match lower and upper letter
