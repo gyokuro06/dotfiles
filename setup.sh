@@ -20,3 +20,5 @@ ln -sf $dotfiles_path/vim $XDG_CONFIG_HOME/vim
 ln -sf $dotfiles_path/zsh/.zshenv $HOME/.zshenv
 mkdir -p $XDG_CONFIG_HOME/zsh
 ln -sf $dotfiles_path/zsh/.zshrc $XDG_CONFIG_HOME/zsh/.zshrc
+# asdf
+ln -sf $dotfiles_path/.tool-versions $HOME/.tool-versions
