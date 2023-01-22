@@ -1,0 +1,1 @@
+/home/yuya/.asdf/completions/asdf.fish
