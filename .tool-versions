@@ -1,0 +1,7 @@
+skaffold 2.0.3
+nodejs 18.7.0
+clojure 1.11.1.1149
+yarn 1.22.19
+helm 3.10.3
+dotnet 7.0.102
+python 3.11.1
