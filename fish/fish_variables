@@ -2,10 +2,17 @@
 # VERSION: 3.0
 SETUVAR __fish_initialized:3400
 SETUVAR _fish_abbr_dc:docker\x20compose
+SETUVAR _fish_abbr_ga:git\x20add
+SETUVAR _fish_abbr_gap:git\x20add\x20\x2dp
+SETUVAR _fish_abbr_gcm:git\x20commit\x20\x2dm
+SETUVAR _fish_abbr_gsh:git\x20push
+SETUVAR _fish_abbr_gst:git\x20status
+SETUVAR _fish_abbr_gul:git\x20pull\x20\x2d\x2drebase\x20\x2d\x2dautostash
 SETUVAR _fish_abbr_k:kubectl
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish
 SETUVAR _fisher_oh_2D_my_2D_fish_2F_theme_2D_agnoster_files:\x7e/\x2econfig/fish/functions/fish_mode_prompt\x2efish\x1e\x7e/\x2econfig/fish/functions/fish_prompt\x2efish\x1e\x7e/\x2econfig/fish/functions/fish_right_prompt\x2efish
-SETUVAR _fisher_plugins:jorgebucaran/fisher\x1eoh\x2dmy\x2dfish/theme\x2dagnoster
+SETUVAR _fisher_plugins:jorgebucaran/fisher\x1eoh\x2dmy\x2dfish/theme\x2dagnoster\x1ereitzig/sdkman\x2dfor\x2dfish
+SETUVAR _fisher_reitzig_2F_sdkman_2D_for_2D_fish_files:\x7e/\x2econfig/fish/functions/sdk\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/sdk\x2efish\x1e\x7e/\x2econfig/fish/completions/sdk\x2efish
 SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR fish_color_autosuggestion:969896
 SETUVAR fish_color_cancel:\x2d\x2dreverse
@@ -47,4 +54,4 @@ SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3dbrblack
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR fish_user_paths:/Users/yuya/\x2ejenv/bin\x1e/usr/local/opt/bison/bin\x1e/usr/local/opt/flex/bin\x1e/Users/yuya/\x2enodebrew/current/bin\x1e/usr/local/opt/fzf/bin
+SETUVAR fish_user_paths:/Users/yuya/\x2esdkman\x1e/Users/yuya/\x2ejenv/bin\x1e/usr/local/opt/bison/bin\x1e/usr/local/opt/flex/bin\x1e/Users/yuya/\x2enodebrew/current/bin\x1e/usr/local/opt/fzf/bin
