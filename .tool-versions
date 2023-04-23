@@ -5,3 +5,4 @@ yarn 1.22.19
 helm 3.10.3
 dotnet 7.0.102
 python 3.11.1
+rust stable
