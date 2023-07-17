@@ -69,7 +69,7 @@ setopt share_history
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 ## colima
-export DOCKER_HOST=unix:///Users/yuya/.colima/default/docker.sock
+export DOCKER_HOST=unix://$HOME/.colima/default/docker.sock
 ## mysql-client
 export PATH=$PATH:/usr/local/opt/mysql-client/bin
 
