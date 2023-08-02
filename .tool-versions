@@ -6,3 +6,5 @@ helm 3.10.3
 dotnet 7.0.102
 python 3.11.1
 rust stable
+ghq 1.4.2
+kind 0.20.0
