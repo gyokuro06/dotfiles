@@ -8,3 +8,4 @@ python 3.11.1
 rust stable
 ghq 1.4.2
 kind 0.20.0
+flutter 3.13.0-stable
