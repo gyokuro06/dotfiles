@@ -1,5 +1,6 @@
 jorgebucaran/fisher
-oh-my-fish/theme-agnoster
-reitzig/sdkman-for-fish
-patrickf1/fzf.fish
+jethrokuan/fzf
 decors/fish-ghq
+oh-my-fish/theme-agnoster
+ladicle/fish-kubectl-prompt
+reitzig/sdkman-for-fish

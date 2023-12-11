@@ -1,0 +1,31 @@
+[core]
+    autocrlf = false
+    ignoreCase = false
+	fsmonitor = true
+	untrackedCache = true
+    pager = delta
+
+[init]
+    defaultBranch = main
+
+[commit]
+    verbose = true
+
+[diff]
+    algorithm = histogram
+    colorMoved = default
+
+[ghq]
+	root = ~/sources/ghq
+
+[delta]
+  navigate = true
+  light = false
+  side-by-side = true
+  line-numbers = true
+
+[interactive]
+  diffFilter = delta --color-only
+
+[merge]
+  conflictstyle = diff3
