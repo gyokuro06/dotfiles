@@ -49,16 +49,16 @@ abbr -a kc 'kubeswitch colima'
 abbr -a kk 'kubeswitch kind-kind'
 abbr -a ko 'kubeswitch orbstack'
 abbr -a crestart 'colima stop && colima start'
-abbr -a lnsock 'sudo ln -s -F /Users/yuya.yagai/.colima/default/docker.sock /var/run/docker.sock'
+abbr -a lnsock 'sudo ln -s -F ~/.colima/default/docker.sock /var/run/docker.sock'
 
-abbr -a aconn '/Users/yuya.yagai/sources/personal/bin/anyconnect connect'
-abbr -a adisconn '/Users/yuya.yagai/sources/personal/bin/anyconnect disconnect'
-abbr -a ast '/Users/yuya.yagai/sources/personal/bin/anyconnect status'
+abbr -a aconn '~/sources/personal/bin/anyconnect connect'
+abbr -a adisconn '~/sources/personal/bin/anyconnect disconnect'
+abbr -a ast '~/sources/personal/bin/anyconnect status'
 
-abbr -a opening 'colima stop && colima start; /Users/yuya.yagai/sources/personal/bin/anyconnect connect'
-abbr -a fin 'colima stop && /Users/yuya.yagai/sources/personal/bin/anyconnect disconnect'
+abbr -a opening 'colima stop && colima start; ~/sources/personal/bin/anyconnect connect'
+abbr -a fin 'colima stop && ~/sources/personal/bin/anyconnect disconnect'
 
-abbr -a restclient 'code /Users/yuya.yagai/sources/personal/rest_client'
+abbr -a restclient 'code ~/sources/personal/rest_client'
 
 source /usr/local/opt/asdf/libexec/asdf.fish
 
