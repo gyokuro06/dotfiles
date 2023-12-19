@@ -15,7 +15,6 @@ kotlin 1.7.20
 golang 1.19.2
 argocd 2.5.5
 kubectl 1.25.6
-gcloud 436.0.0
 stern 1.23.0
 colima 0.5.5
 yq 4.31.2

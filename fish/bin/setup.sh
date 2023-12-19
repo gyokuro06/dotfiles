@@ -26,6 +26,8 @@ if test -f "$fish_base_dir/completions/orbstack.fish"; then
 else
   orbctl completion fish > $fish_base_dir/completions/orbstack.fish
 fi
+echo "Completion: gh"
+gh completion -s fish > ~/.config/fish/completions/gh.fish
 
 # setup base config
 symbolicLink $working_dir/config.fish $fish_base_dir/.
