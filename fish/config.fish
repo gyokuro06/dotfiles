@@ -56,8 +56,7 @@ abbr -a restclient 'code ~/sources/personal/rest_client'
 ## fzf
 bind ç __fzf_cd
 
-# envrionment variables
-set -gx PATH $PATH $HOME/.krew/bin
+# Dart
 set -gx PATH "$PATH":"$HOME/.pub-cache/bin"
 
 # asdf
@@ -68,6 +67,10 @@ case Darwin
 case Linux
     source $HOME/.asdf/asdf.fish
 end
+set -gx MISE_TRUSTED_CONFIG_PATHS "$MISE_TRUSTED_CONFIG_PATHS":"$XDG_CONFIG_HOME/mise"
+
+# kubectl
+set -gx PATH $PATH $HOME/.krew/bin
 
 # kubeswitch
 switcher init fish | source
