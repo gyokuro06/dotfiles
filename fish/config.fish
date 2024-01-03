@@ -15,14 +15,6 @@ set __fish_git_prompt_char_stashstate '↩'
 set __fish_git_prompt_char_upstream_ahead '+'
 set __fish_git_prompt_char_upstream_behind '-'
 
-# asdf
-switch (uname)
-case Darwin
-    source /usr/local/opt/asdf/libexec/asdf.fish
-case Linux
-    source $HOME/.asdf/asdf.fish
-end
-
 # abbr
 abbr -a lla 'ls -la'
 abbr -a uuid 'uuidgen | tr "[:upper:]" "[:lower:]"'
@@ -60,11 +52,22 @@ abbr -a fin 'colima stop && ~/sources/personal/bin/anyconnect disconnect'
 
 abbr -a restclient 'code ~/sources/personal/rest_client'
 
-source /usr/local/opt/asdf/libexec/asdf.fish
+# key bindings
+## fzf
+bind ç __fzf_cd
 
 # envrionment variables
 set -gx PATH $PATH $HOME/.krew/bin
 set -gx PATH "$PATH":"$HOME/.pub-cache/bin"
+
+# asdf
+source /usr/local/opt/asdf/libexec/asdf.fish
+switch (uname)
+case Darwin
+    source /usr/local/opt/asdf/libexec/asdf.fish
+case Linux
+    source $HOME/.asdf/asdf.fish
+end
 
 # kubeswitch
 switcher init fish | source

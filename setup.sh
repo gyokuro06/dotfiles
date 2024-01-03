@@ -1,24 +1,40 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 set -eu
 
-readonly dotfiles_path=$(dirname $0)
+echo "Start setup dotfiles ..."
+source bin/utils.sh
+
+readonly dotfiles_path=$(pwd)
+echo "dotfiles_path=$dotfiles_path"
 
 # XDG
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
+echo "XDG_CONFIG_HOME=$XDG_CONFIG_HOME"
+echo "XDG_STATE_HOME=$XDG_STATE_HOME"
+echo "XDG_DATA_HOME=$XDG_DATA_HOME"
+echo "XDG_CACHE_HOME=$XDG_CACHE_HOME"
 
-# bash
-ln -sf $dotfiles_path/bash $XDG_CONFIG_HOME/bash
-# git
-ln -sf $dotfiles_path/git $XDG_CONFIG_HOME/git
-# vim
-ln -sf $dotfiles_path/vim $XDG_CONFIG_HOME/vim
-# zsh
-ln -sf $dotfiles_path/zsh/.zshenv $HOME/.zshenv
-mkdir -p $XDG_CONFIG_HOME/zsh
-ln -sf $dotfiles_path/zsh/.zshrc $XDG_CONFIG_HOME/zsh/.zshrc
-# asdf
-ln -sf $dotfiles_path/.tool-versions $HOME/.tool-versions
+function main() {
+  executeSetupShell homebrew
+  # Shell
+  executeSetupShell bash
+  executeSetupShell zsh
+  executeSetupShell fish
+
+  executeSetupShell git
+
+  executeSetupShell asdf
+
+  executeSetupShell nvim
+  #Terminal
+  executeSetupShell tmux
+  executeSetupShell alacritty
+}
+
+main
+
+echo "Finish setup dotfiles!"
