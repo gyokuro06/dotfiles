@@ -30,7 +30,7 @@ abbr -a gsh 'git push'
 abbr -a gco 'git checkout'
 abbr -a ggraph 'git log --graph --color --oneline --all'
 abbr -a grss 'git restore --staged'
-abbr -a gpatch 'git add -A && git diff --cached > ~/tmp/diff/diff_$(date +%Y_%m_%d_%H%M%S).patch && echo "Created: ~/tmp/diff_$(date +%Y_%m_%d_%H%M%S).patch" && git restore --staged $(git rev-parse --show-toplevel)'
+abbr -a gpatch 'git add -A && git diff --cached > ~/tmp/diff/mabo_diff_$(date +%Y_%m_%d_%H%M%S).patch && echo "Created: ~/tmp/diff/mabo_diff_$(date +%Y_%m_%d_%H%M%S).patch" && git restore --staged $(git rev-parse --show-toplevel)'
 
 abbr -a lnsock 'sudo ln -s ~/.colima/default/docker.sock /var/run/.'
 abbr -a dctx 'docker context'
@@ -74,3 +74,7 @@ set -gx PATH $PATH $HOME/.krew/bin
 
 # kubeswitch
 switcher init fish | source
+
+# key binding
+bind ç __fzf_cd
+/Users/yuya.yagai/.local/bin/mise activate fish | source
